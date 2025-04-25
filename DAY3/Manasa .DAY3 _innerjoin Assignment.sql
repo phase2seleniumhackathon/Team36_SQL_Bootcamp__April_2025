@@ -1,9 +1,9 @@
 --inner join
 
-SELECT lastn_ame, first_name
-FROM employees
-INNER JOIN orders ON employees.employee_id = orders.employee_id;
---not working  up query
+--SELECT lastn_ame, first_name
+--FROM employees
+--INNER JOIN orders ON employees.employee_id = orders.employee_id;
+
 
 
 SELECT 
