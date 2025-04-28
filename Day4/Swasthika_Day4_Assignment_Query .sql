@@ -65,14 +65,14 @@ FROM products
 FULL OUTER JOIN categories  
 ON categories.category_id = products.category_id;
 
---5.Show all possible product and category combinations (Cross join).
+/*5.Show all possible product and category combinations (Cross join).*/
 SELECT * FROM products;
 SELECT * FROM categories;
 SELECT products.product_id,products.product_name,categories.category_id,categories.category_name
 FROM products 
 CROSS JOIN categories 
 
---6.Show all employees and their manager(Self join(left join))
+/*.Show all employees and their manager(Self join(left join))*/
 SELECT * FROM employees;
 SELECT employees.employee_id,employees.first_name || ' ' || employees.last_name AS employee_name,
  manager.employee_id AS manager_id,manager.first_name || ' ' || manager.last_name AS manager_name
@@ -80,9 +80,9 @@ FROM employees
 LEFT JOIN employees manager
 ON employees.reports_to = manager.employee_id;
 
---7. 	List all customers who have not selected a shipping method.
---Tables used: customers, orders
---(Left Join, WHERE o.shipvia IS NULL)
+/*7. 	List all customers who have not selected a shipping method.
+Tables used: customers, orders
+(Left Join, WHERE o.shipvia IS NULL) */
 SELECT * FROM customers; 
 SELECT * FROM orders;
 SELECT customers.customer_id, orders.order_id, orders.shipped_date,orders.ship_via FROM customers 
