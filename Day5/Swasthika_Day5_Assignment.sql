@@ -37,15 +37,23 @@ SELECT contact_title FROM customers;
 
 --4.Find categories that have both discontinued and in-stock products(Display category_id,instock means units_In_stock>0, intersect)
 
-SELECT category_id
+SELECT category_id,
+units_in_stock as instock
 FROM products
-WHERE discontinued = 1
-
+WHERE product_id IN (
+    SELECT product_id
+    FROM products
+    WHERE discontinued = 1
+)
 INTERSECT
-
-SELECT category_id
+SELECT category_id,
+units_in_stock as instock
 FROM products
-WHERE units_in_stock > 0;
+WHERE product_id IN (
+    SELECT product_id
+    FROM products
+    WHERE units_in_stock > 0
+);
 
 --5.Find orders that have discounted items(Display order_id, EXCEPT)
 -- All orders
